@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { JSX } from "react";
 import { BufferGeometry, Material } from "three";
@@ -26,33 +26,45 @@ export function Room(props: GroupProps) {
   const screensRef = useRef(null);
   const matcapTexture = useTexture("/images/textures/mat1.png");
 
-  const curtainMaterial = new THREE.MeshPhongMaterial({
-    color: "#d90429",
-  });
+  const curtainMaterial = useMemo(() => {
+    return new THREE.MeshPhongMaterial({ color: "#d90429" });
+  }, []);
 
-  const bodyMaterial = new THREE.MeshPhongMaterial({
-    map: matcapTexture,
-  });
+  const bodyMaterial = useMemo(() => {
+    return new THREE.MeshPhongMaterial({
+      map: matcapTexture,
+    });
+  }, [matcapTexture]);
 
-  const tableMaterial = new THREE.MeshPhongMaterial({
-    color: "#582f0e",
-  });
+  const tableMaterial = useMemo(() => {
+    return new THREE.MeshPhongMaterial({
+      color: "#582f0e",
+    });
+  }, []);
 
-  const radiatorMaterial = new THREE.MeshPhongMaterial({
-    color: "#fff",
-  });
+  const radiatorMaterial = useMemo(() => {
+    return new THREE.MeshPhongMaterial({
+      color: "#fff",
+    });
+  }, []);
 
-  const compMaterial = new THREE.MeshStandardMaterial({
-    color: "#fff",
-  });
+  const compMaterial = useMemo(() => {
+    return new THREE.MeshStandardMaterial({
+      color: "#fff",
+    });
+  }, []);
 
-  const pillowMaterial = new THREE.MeshPhongMaterial({
-    color: "#8338ec",
-  });
+  const pillowMaterial = useMemo(() => {
+    return new THREE.MeshPhongMaterial({
+      color: "#8338ec",
+    });
+  }, []);
 
-  const chairMaterial = new THREE.MeshPhongMaterial({
-    color: "#000",
-  });
+  const chairMaterial = useMemo(() => {
+    return new THREE.MeshPhongMaterial({
+      color: "#000",
+    });
+  }, []);
 
   return (
     <group {...props} dispose={null}>

@@ -13,7 +13,7 @@ const ExperienceSection = () => {
     gsap.utils.toArray(".timeline-card").forEach((card: any) => {
       gsap.from(card, {
         xPercent: -100,
-        opactity: 0,
+        opacity: 0,
         transformOrigin: "left left",
         duration: 1,
         ease: "power2.inOut",
@@ -31,9 +31,7 @@ const ExperienceSection = () => {
         start: "top center",
         end: "70% center",
         onUpdate: (self) => {
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-          });
+          gsap.set(".timeline", { scaleY: 1 - self.progress });
         },
       },
     });
@@ -41,7 +39,7 @@ const ExperienceSection = () => {
     gsap.utils.toArray(".expText").forEach((text: any) => {
       gsap.from(text, {
         xPercent: 0,
-        opactity: 0,
+        opacity: 0,
         duration: 1,
         ease: "power2.inOut",
         scrollTrigger: {
